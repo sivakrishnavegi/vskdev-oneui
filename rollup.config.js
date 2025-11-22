@@ -1,24 +1,24 @@
-import typescript from '@rollup/plugin-typescript';
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-import postcss from 'rollup-plugin-postcss';
+import commonjs from "@rollup/plugin-commonjs";
+import resolve from "@rollup/plugin-node-resolve";
+import typescript from "@rollup/plugin-typescript";
+import postcss from "rollup-plugin-postcss";
 
 export default {
-  input: 'src/index.tsx',
+  input: "src/index.tsx",
   output: [
-    { file: 'dist/index.cjs.js', format: 'cjs', sourcemap: true },
-    { file: 'dist/index.esm.js', format: 'esm', sourcemap: true }
+    { file: "dist/index.cjs.js", format: "cjs", sourcemap: true },
+    { file: "dist/index.esm.js", format: "esm", sourcemap: true },
   ],
-  external: ['react', 'react-dom', 'tslib'],
+  external: ["react", "react-dom", "tslib"],
   plugins: [
     postcss({
-      extract: "styles.css",
+      extract: "oneui.css",
       minimize: true,
       modules: false,
-      plugins: []
+      plugins: [],
     }),
     resolve(),
     commonjs(),
-    typescript({ tsconfig: './tsconfig.json' })
-  ]
+    typescript({ tsconfig: "./tsconfig.json" }),
+  ],
 };

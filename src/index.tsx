@@ -1,4 +1,4 @@
-import "./theme/tailwind.css";
+// Import only the compiled CSS (not raw Tailwind source)
 import "../dist/oneui.css";
 
 // Export UI components
