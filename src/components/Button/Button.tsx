@@ -1,31 +1,32 @@
-import React from "react";
-import { ButtonProps } from "./Button.types";
+import { Loader2 } from "lucide-react";
+import * as React from "react";
 import { cn } from "../../utils/cn";
+import { Button as ShadCNButton } from "../shadcn/ui/button";
+import type { CustomButtonProps } from "./Button.types";
 
-export const Button: React.FC<ButtonProps> = ({
-  variant = "default",
-  size = "md",
+export const Button: React.FC<CustomButtonProps> = ({
+  loading = false,
+  icon,
+  children,
   className,
   ...props
 }) => {
-  const base = "rounded font-medium transition-colors";
-
-  const variants = {
-    default: "bg-blue-600 text-white hover:bg-blue-700",
-    outline: "border border-gray-400 text-gray-600 hover:bg-gray-200",
-    danger: "bg-red-600 text-white hover:bg-red-700",
-  };
-
-  const sizes = {
-    sm: "px-2 py-1 text-sm",
-    md: "px-4 py-2",
-    lg: "px-5 py-3 text-lg",
-  };
-
   return (
-    <button
-      className={cn(base, variants[variant], sizes[size], className)}
+    <ShadCNButton
+      className={cn(
+        "relative flex items-center justify-center gap-2",
+        className
+      )}
+      disabled={loading || props.disabled} // disable if loading
       {...props}
-    />
+    >
+      {loading && (
+        <span className="absolute left-3 flex items-center">
+          <Loader2 className="h-4 w-4 animate-spin text-current" />
+        </span>
+      )}
+      {!loading && icon && <span className="flex items-center">{icon}</span>}
+      <span className={loading ? "opacity-50" : ""}>{children}</span>
+    </ShadCNButton>
   );
 };
