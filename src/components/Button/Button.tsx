@@ -14,18 +14,21 @@ export const Button: React.FC<CustomButtonProps> = ({
   return (
     <ShadCNButton
       className={cn(
-        "relative flex items-center justify-center gap-2",
+        "flex items-center justify-center gap-2",
         className
       )}
       disabled={loading || props.disabled} // disable if loading
       {...props}
     >
+      {/* Spinner */}
       {loading && (
-        <span className="absolute left-3 flex items-center">
-          <Loader2 className="h-4 w-4 animate-spin text-current" />
-        </span>
+        <Loader2 className="h-4 w-4 animate-spin text-current" />
       )}
+
+      {/* Optional icon (only if not loading) */}
       {!loading && icon && <span className="flex items-center">{icon}</span>}
+
+      {/* Text */}
       <span className={loading ? "opacity-50" : ""}>{children}</span>
     </ShadCNButton>
   );
