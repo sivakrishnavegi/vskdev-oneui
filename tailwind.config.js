@@ -1,9 +1,32 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./src/**/*.{ts,tsx,js,jsx}",
+    "./dist/**/*.{ts,tsx,js,jsx}",
+  ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        border: "var(--border)",
+        ring: "var(--ring)",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+      },
+      borderRadius: {
+        md: "var(--radius)",
+      },
+    },
   },
-  plugins: [],
-}
-
+  plugins: [
+    function ({ addUtilities, theme }) {
+      // define outline-ring utility
+      addUtilities({
+        ".outline-ring\\/50": {
+          outlineColor: theme("colors.ring"),
+          outlineStyle: "solid",
+          outlineWidth: "3px",
+        },
+      });
+    },
+  ],
+};
