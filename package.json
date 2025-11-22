@@ -4,7 +4,7 @@
     "access": "restricted"
   },
   "type": "module",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React + Tailwind component library",
   "author": "siva krishna vegi",
   "license": "MIT",
