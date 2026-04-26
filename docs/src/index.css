@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --docs-card: rgba(30, 41, 59, 0.7);
+  --docs-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  @apply bg-background text-foreground font-sans;
+}
+
+.glass {
+  background: var(--docs-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--docs-border);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

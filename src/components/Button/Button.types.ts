@@ -1,4 +1,3 @@
-import { VariantProps } from "class-variance-authority";
 import type { ButtonProps as ShadCNButtonProps } from "../shadcn/ui/button";
 
 export interface CustomButtonProps extends ShadCNButtonProps {
